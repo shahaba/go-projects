@@ -1,9 +1,5 @@
 steps:
-  - label: ":pipeline: Pipeline upload"
-    command: buildkite-agent pipeline upload
-
   - label: ":go: Build Go Projects"
     commands:
       - "./.buildkite/build-go-projects.sh"
-      - "ls -a"
     timeout: 30
