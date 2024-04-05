@@ -1,2 +1,4 @@
-# go-projects
-A small repo for go related learning projects
+# Learning GO 
+
+This is a repo I setup to learn Go, following along with the Learning Go 2nd book
+
