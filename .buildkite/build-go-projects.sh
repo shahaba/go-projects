@@ -1,8 +1,15 @@
 #!/bin/bash
 
-echo "Finding and building Go projects..."
+# Start the pipeline file
+echo "steps:" > dynamic-pipeline.yml
 
-find . -type f -name 'go.mod' -exec dirname {} \; | sort -u | while read -r dir; do
-  echo "Attempting to build in directory: $dir"
-  cd "$dir" && make 
+# Find directories with a Makefile and generate build steps
+find . -name 'Makefile' | while read -r makefilePath; do
+  dir=$(dirname "$makefilePath")
+  echo "  - label: \"Build $(basename "$dir")\"" >> dynamic-pipeline.yml
+  echo "    command:" >> dynamic-pipeline.yml
+  echo "      - \"cd '$dir' && make\"" >> dynamic-pipeline.yml
 done
+
+# Upload the dynamic pipeline to Buildkite
+buildkite-agent pipeline upload dynamic-pipeline.yml
