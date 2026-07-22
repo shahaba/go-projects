@@ -11,5 +11,5 @@ vet: fmt
 build: vet
 	go build
 
-clean: build
+clean:
 	rm -f ch01-go-env
