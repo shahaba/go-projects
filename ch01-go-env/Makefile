@@ -1,6 +1,7 @@
 .DEFAULT_GOAL := build
 
-.PHONY:fmt vet build
+.PHONY: fmt vet build
+
 fmt:
 	go fmt ./...
 
@@ -11,4 +12,4 @@ build: vet
 	go build
 
 clean:
-	go clean	
+	rm -f ch01-go-env
