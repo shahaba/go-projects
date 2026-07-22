@@ -9,6 +9,9 @@ find . -name 'Makefile' | while read -r makefilePath; do
   echo "  - label: \"Build $(basename "$dir")\"" >> dynamic-pipeline.yml
   echo "    command:" >> dynamic-pipeline.yml
   echo "      - \"cd '$dir' && make\"" >> dynamic-pipeline.yml
+  echo "    plugins:" >> dynamic-pipeline.yml
+  echo "      - docker#v5.11.0:" >> dynamic-pipeline.yml
+  echo "          image: \"golang:1.26.5\"" >> dynamic-pipeline.yml
 done
 
 # Upload the dynamic pipeline to Buildkite
