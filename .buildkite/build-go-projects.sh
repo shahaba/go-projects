@@ -12,6 +12,8 @@ find . -name 'Makefile' | while read -r makefilePath; do
   echo "    plugins:" >> dynamic-pipeline.yml
   echo "      - docker#v5.11.0:" >> dynamic-pipeline.yml
   echo "          image: \"golang:1.26.5\"" >> dynamic-pipeline.yml
+  echo "          environment:" >> dynamic-pipeline.yml
+  echo "            - \"GOFLAGS=-buildvcs=false\"" >> dynamic-pipeline.yml
 done
 
 # Upload the dynamic pipeline to Buildkite
